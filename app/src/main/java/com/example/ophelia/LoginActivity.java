@@ -1,16 +1,15 @@
 package com.example.ophelia;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -18,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private final String username = "Yai";
     private final String password = "123";
-    private final Handler mHideHandler = new Handler();
+
     private Button btnConfirm;
     private EditText user, pwd;
     private Intent accessIntent;
@@ -61,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
-//    Set fullscreen mode depending on the android system version
+    //    Set fullscreen mode depending on the android system version
     private void setFullScreen() {
 //        Checks device API
         if (Build.VERSION.SDK_INT < 19) {
@@ -77,5 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
             );
         }
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
     }
 }
