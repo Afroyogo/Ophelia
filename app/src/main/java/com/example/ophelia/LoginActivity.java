@@ -1,12 +1,8 @@
 package com.example.ophelia;
 
 import android.annotation.SuppressLint;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -15,27 +11,18 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 public class LoginActivity extends AppCompatActivity {
 
     private final String username = "Yai";
     private final String password = "123";
-
+    private final Handler mHideHandler = new Handler();
     private Button btnConfirm;
     private EditText user, pwd;
     private Intent accessIntent;
     private CardView cvLogin;
-
-    private final Handler mHideHandler = new Handler();
-    private View mContentView;
-    private final Runnable mHidePart2Runnable = new Runnable() {
-        @SuppressLint("InlinedApi")
-        @Override
-        public void run() {
-            mContentView.setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_FULLSCREEN
-            );
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
-        mContentView = findViewById(R.id.fullscreen_content);
         btnConfirm = findViewById(R.id.btConfirm);
         user = findViewById(R.id.etUsername);
         pwd = findViewById(R.id.etPassword);
@@ -60,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        hide();
+
+        setFullScreen();
     }
 
 
@@ -74,11 +61,21 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
-    private void hide() {
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
+//    Set fullscreen mode depending on the android system version
+    private void setFullScreen() {
+//        Checks device API
+        if (Build.VERSION.SDK_INT < 19) {
+            this.getWindow().getDecorView()
+                    .setSystemUiVisibility(View.GONE);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+//                            Allows status bar to show dark icons if theme is light
+                            | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+            );
         }
-        mHideHandler.postDelayed(mHidePart2Runnable, 0);
     }
 }
