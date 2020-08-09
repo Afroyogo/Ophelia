@@ -1,22 +1,17 @@
 package com.example.ophelia;
 
-import android.annotation.SuppressLint;
+import android.os.Bundle;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
+import com.example.ophelia.UI.UIFunctions;
 
 public class MainScreenActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main_screen);
-
+        UIFunctions.setFullScreen(this);
     }
 }
