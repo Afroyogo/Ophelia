@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "605931982355",
+    "firebase_url": "https://ophelia-dee46.firebaseio.com",
+    "project_id": "ophelia-dee46",
+    "storage_bucket": "ophelia-dee46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605931982355:android:36f5ae7f83ef8dbe21f9e6",
+        "android_client_info": {
+          "package_name": "com.example.ophelia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605931982355-mdc0nojh41ad4kiv3v61251auq4qkcf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnIlvCwA1xx_ARPWN7ZuqoOHm_oXplK-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605931982355-mdc0nojh41ad4kiv3v61251auq4qkcf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
