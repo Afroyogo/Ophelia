@@ -58,9 +58,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initialise() {
+        autoLogin();
         UIFunctions.setFullScreen(this);
         fbAuth = FirebaseAuth.getInstance();
         Log.e("I", fbAuth.toString());
+    }
+
+    private void autoLogin() {
+        user.setText("jaijaudenes@gmail.com");
+        pwd.setText("123123");
     }
 
     @Override
